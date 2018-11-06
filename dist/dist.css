@@ -6,6 +6,19 @@ body, html {
   padding: 0;
   overflow: hidden; }
 
+.theme-chooser-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; }
+
+.theme-chooser {
+  margin-right: 2px; }
+
 #example {
   height: 100%; }
 
