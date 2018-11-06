@@ -85,7 +85,6 @@ export default class Home extends React.Component {
       dataSource: [
         { text: "Black", value: "black" },
         { text: "Blue Opal", value: "blueopal" },
-        { text: "Bootstrap", value: "bootstrap" },
         { text: "Fiori", value: "fiori" },
         { text: "Default", value: "default" },
         { text: "Material", value: "material" },
