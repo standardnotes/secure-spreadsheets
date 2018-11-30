@@ -181,13 +181,18 @@ export default class Home extends React.Component {
   }
 
   saveSpreadsheet() {
-    this.componentManager.saveItemWithPresave(this.note, () => {
-      this.note.content.preview_html = null;
-      this.note.content.preview_plain = "Created with Spreadsheets";
+    // Be sure to capture this object as a variable, as this.note may be reassigned in `streamContextItem`, so by the time
+    // you modify it in the presave block, it may not be the same object anymore, so the presave values will not be applied to
+    // the right object, and it will save incorrectly.
+    let note = this.note;
+
+    this.componentManager.saveItemWithPresave(note, () => {
+      note.content.preview_html = null;
+      note.content.preview_plain = "Created with Spreadsheets";
 
       var json = this.getJSON();
       var content = JSON.stringify(json);
-      this.note.content.text = content;
+      note.content.text = content;
     });
   }
 
