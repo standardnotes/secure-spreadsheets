@@ -124,7 +124,6 @@ export default class Home extends React.Component {
       var platform = this.componentManager.platform;
       if(platform) {
         document.body.classList.add(platform);
-        console.log("adding class: ", platform)
       }
     });
 
