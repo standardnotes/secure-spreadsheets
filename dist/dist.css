@@ -20,7 +20,8 @@ body, html {
 
 .k-spreadsheet .k-spreadsheet-action-bar {
   color: var(--sn-stylekit-editor-foreground-color) !important;
-  background-color: var(--sn-stylekit-contrast-background-color) !important; }
+  background-color: var(--sn-stylekit-contrast-background-color) !important;
+  border-color: var(--sn-stylekit-border-color) !important; }
 
 .k-spreadsheet .k-spreadsheet-formula-input {
   color: var(--sn-stylekit-editor-foreground-color) !important;
@@ -59,6 +60,9 @@ body, html {
 .k-autocomplete .k-input, .k-autocomplete.k-state-focused .k-input, .k-dropdown-wrap .k-input, .k-dropdown-wrap.k-state-focused .k-input, .k-numeric-wrap.k-state-focused .k-input, .k-picker-wrap.k-state-focused .k-input, .k-textbox > input {
   border-color: var(--sn-stylekit-border-color) !important; }
 
+.k-autocomplete, .k-block, .k-button-group .k-tool, .k-calendar th, .k-content, .k-dateinput.k-state-disabled > .k-textbox:hover, .k-dropdown-wrap, .k-dropzone-active, .k-editable-area, .k-editor-dialog .k-tabstrip-items, .k-filter-row > th, .k-footer-template td, .k-grid td, .k-grid td.k-state-selected, .k-grid-content-locked, .k-grid-footer, .k-grid-footer-locked, .k-grid-footer-wrap, .k-grid-header, .k-grid-header-locked, .k-grid-header-wrap, .k-group, .k-group-footer td, .k-grouping-header, .k-grouping-header .k-group-indicator, .k-header, .k-input, .k-maskedtextbox.k-state-disabled > .k-textbox:hover, .k-pager-refresh, .k-pager-wrap, .k-pager-wrap .k-link, .k-panel > .k-item > .k-link, .k-panelbar .k-content, .k-panelbar .k-panel, .k-panelbar > .k-item > .k-link, .k-popup.k-align .k-list .k-item:last-child, .k-separator, .k-slider-track, .k-splitbar, .k-state-default, .k-state-default .k-select, .k-state-disabled, .k-textbox, .k-textbox > input, .k-tiles, .k-toolbar, .k-tooltip, .k-treemap-tile, .k-upload-files, .k-widget {
+  border-color: var(--sn-stylekit-border-color) !important; }
+
 .k-input, .k-multiselect-wrap, .k-textbox > input, input.k-textbox, input.k-textbox:hover, textarea.k-textbox, textarea.k-textbox:hover {
   color: var(--sn-stylekit-editor-foreground-color) !important;
   background-color: var(--sn-stylekit-contrast-background-color) !important; }
@@ -86,12 +90,16 @@ body, html {
   color: var(--sn-stylekit-editor-foreground-color) !important; }
 
 .k-calendar .k-header, .k-header.k-scheduler-toolbar, .k-menu.k-header, .k-scheduler-footer > .k-header, .k-tabstrip .k-tabstrip-items .k-item, .k-tabstrip.k-header {
-  background-color: var(--sn-stylekit-contrast-background-color) !important; }
+  background-color: var(--sn-stylekit-contrast-background-color) !important;
+  border-color: transparent !important; }
 
 .k-gantt-toolbar .k-state-default, .k-grid .k-grouping-header, .k-grid-header, .k-grid-header-wrap, .k-grouping-header .k-group-indicator, .k-header, .k-pager-wrap, .k-pager-wrap .k-link, .k-pager-wrap .k-textbox {
   border-color: var(--sn-stylekit-border-color) !important; }
 
 .k-spreadsheet .k-spreadsheet-action-bar .k-spreadsheet-formula-bar::before {
+  border-color: var(--sn-stylekit-border-color) !important; }
+
+.k-active-filter, .k-state-active, .k-state-active:hover {
   border-color: var(--sn-stylekit-border-color) !important; }
 
 .k-tabstrip .k-tabstrip-items .k-state-active {
