@@ -73,99 +73,7 @@ export default class Home extends React.Component {
 
       // remove import option
       $(".k-upload-button").remove();
-
-      // theme chooser dropdown
-      this.initThemePicker();
     }.bind(this));
-  }
-
-  initThemePicker() {
-    // k-spreadsheet-sheets-bar
-    $(".theme-chooser").kendoDropDownList({
-      dataSource: [
-        { text: "Black", value: "black" },
-        { text: "Blue Opal", value: "blueopal" },
-        { text: "Fiori", value: "fiori" },
-        { text: "Default", value: "default" },
-        { text: "Material", value: "material" },
-        { text: "Material Black", value: "materialblack" },
-        { text: "Nova", value: "nova" },
-        { text: "Office", value: "office365" },
-        { text: "Metro", value: "metro" },
-        { text: "Metro Black", value: "metroblack" },
-        { text: "Silver", value: "silver" },
-        { text: "Flat", value: "flat" },
-        { text: "Uniform", value: "uniform" },
-        { text: "Moonlight", value: "moonlight" },
-        { text: "High Contrast", value: "highcontrast" },
-      ],
-      dataTextField: "text",
-      dataValueField: "value",
-      change: (e) => {
-        var theme = (e.sender.value() || "default").toLowerCase();
-        this.changeTheme(theme, false);
-      }
-    });
-
-    $(".theme-chooser-container").appendTo(".k-spreadsheet-sheets-bar");
-  }
-
-  // loads new stylesheet
-  changeTheme(skinName, animate) {
-    var skinsWithCommon = ["bootstrap", "fiori", "material", "nova", "office365"];
-    var hasCommon = skinsWithCommon.includes(skinName);
-
-    var doc = document,
-        kendoLinks = $("link[href*='kendo.']"),
-        commonLink = kendoLinks.filter("[href*='kendo.common']"),
-        skinLink = kendoLinks.filter(":not([href*='kendo.common'])"),
-        href = location.href,
-        skinRegex = /kendo\.\w+(\.min)?\.css/i,
-        extension = skinLink.attr("rel") === "stylesheet" ? ".css" : ".less",
-        newSkinUrl = skinLink.attr("href").replace(skinRegex, "kendo." + skinName + "$1" + extension),
-        commonRegex = /kendo\.(.)+(\.min)?\.css/i;
-
-    var newCommonUrl;
-    if(hasCommon) {
-      newCommonUrl = commonLink.attr("href").replace(commonRegex, "kendo.common-" + skinName + "$2" + ".min" + extension);
-    } else {
-      newCommonUrl = commonLink.attr("href").replace(commonRegex, "kendo.common" + ".min" + extension);
-    }
-
-    function preloadStylesheet(file, callback) {
-      var element = $("<link rel='stylesheet' href='" + file + "' \/>").appendTo("head");
-
-      setTimeout(function () {
-        callback();
-        element.remove();
-      }, 100);
-    }
-
-    function replaceTheme() {
-      var browser = kendo.support.browser,
-          oldSkinName = $(doc).data("kendoSkin"),
-          newLink;
-
-      if (browser.msie && browser.version < 10) {
-        newLink = doc.createStyleSheet(newSkinUrl);
-      } else {
-        var newCommonLink = commonLink.eq(0).clone().attr("href", newCommonUrl);
-        newCommonLink.insertBefore(commonLink[0]);
-        newLink = skinLink.eq(0).clone().attr("href", newSkinUrl);
-        newLink.insertBefore(skinLink[0]);
-      }
-
-      commonLink.remove();
-      skinLink.remove();
-
-      $(doc.documentElement).removeClass("k-" + oldSkinName).addClass("k-" + skinName);
-    }
-
-    if(animate) {
-      preloadStylesheet(newSkinUrl, replaceTheme);
-    } else {
-      replaceTheme();
-    }
   }
 
   getSpreadsheet() {
@@ -212,7 +120,12 @@ export default class Home extends React.Component {
     ]
 
     this.componentManager = new ComponentManager(permissions, () => {
-
+      // on ready
+      var platform = this.componentManager.platform;
+      if(platform) {
+        document.body.classList.add(platform);
+        console.log("adding class: ", platform)
+      }
     });
 
     // componentManager.loggingEnabled = true;
