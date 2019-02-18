@@ -1,6 +1,6 @@
 {
   "name": "sn-spreadsheets",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/dist.js",
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore --ext .jsx,.js --format=node_modules/eslint-formatter-pretty .",
@@ -42,6 +42,7 @@
     "react-dom": "15.x",
     "sass-loader": "^6.0.6",
     "sn-components-api": "1.1.11",
+    "sn-stylekit": "^2.0.13",
     "style-loader": "~0.13.1",
     "validate-commit-msg": "2.x",
     "webpack": "3.8.1",

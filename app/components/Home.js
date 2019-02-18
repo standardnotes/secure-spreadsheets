@@ -96,7 +96,7 @@ export default class Home extends React.Component {
 
     this.componentManager.saveItemWithPresave(note, () => {
       note.content.preview_html = null;
-      note.content.preview_plain = "Created with Spreadsheets";
+      note.content.preview_plain = "Created with Secure Spreadsheets";
 
       var json = this.getJSON();
       var content = JSON.stringify(json);
