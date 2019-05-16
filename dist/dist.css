@@ -1,5 +1,5 @@
 :root {
-  --sn-stylekit-base-font-size: 14px;
+  --sn-stylekit-base-font-size: 13px;
   --sn-stylekit-font-size-p: 1.0rem;
   --sn-stylekit-font-size-editor: 1.21rem;
   --sn-stylekit-font-size-h6: 0.8rem;
@@ -510,7 +510,9 @@
 .sn-component .sk-segmented-buttons .sk-button, .sn-component .sk-segmented-buttons .sk-box {
   border-radius: 0;
   white-space: nowrap;
-  margin: 0; }
+  margin: 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important; }
 
 .sn-component .sk-segmented-buttons .sk-button:not(:last-child), .sn-component .sk-segmented-buttons .sk-box:not(:last-child) {
   border-right: none;
