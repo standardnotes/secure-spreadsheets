@@ -1902,6 +1902,9 @@ body, html {
   color: var(--sn-stylekit-editor-foreground-color) !important;
   background-color: var(--sn-stylekit-editor-background-color) !important; }
 
+.k-spreadsheet .k-spreadsheet-name-editor .k-select {
+  background-color: var(--sn-stylekit-contrast-background-color) !important; }
+
 .k-block, .k-content, .k-dropdown .k-input, .k-popup, .k-toolbar, .k-widget {
   color: var(--sn-stylekit-editor-foreground-color) !important;
   background-color: var(--sn-stylekit-editor-background-color) !important; }
@@ -2015,13 +2018,27 @@ div.k-window, div.k-window.k-state-focused {
   background-color: var(--sn-stylekit-contrast-background-color) !important;
   border: none !important;
   font-weight: bold; }
+  .k-button:hover {
+    background-color: var(--sn-stylekit-background-color) !important; }
 
-.k-button:hover {
-  background-color: var(--sn-stylekit-background-color) !important; }
+.k-list .k-item {
+  border: none !important;
+  cursor: pointer !important; }
+  .k-list .k-item .k-icon {
+    color: var(--sn-stylekit-info-color) !important; }
+  .k-list .k-item.k-state-hovered {
+    background-color: var(--sn-stylekit-background-color) !important; }
+  .k-list .k-item.k-state-selected {
+    background-color: var(--sn-stylekit-info-color) !important;
+    color: var(--sn-stylekit-info-contrast-color) !important; }
+    .k-list .k-item.k-state-selected .k-icon {
+      color: var(--sn-stylekit-info-contrast-color) !important; }
 
-.k-primary {
+.k-button.k-primary {
   color: var(--sn-stylekit-info-contrast-color) !important;
   border-color: var(--sn-stylekit-info-color) !important;
   background-color: var(--sn-stylekit-info-color) !important; }
+  .k-button.k-primary:hover:not(:disabled) {
+    filter: brightness(130%); }
 
 /*# sourceMappingURL=dist.css.map*/
