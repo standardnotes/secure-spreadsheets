@@ -27,6 +27,7 @@ body, html {
   color: var(--sn-stylekit-editor-foreground-color) !important;
   background-color: var(--sn-stylekit-contrast-background-color) !important;
   border-color: var(--sn-stylekit-border-color) !important;
+  border-top-width: 1px !important;
 }
 
 .k-spreadsheet .k-spreadsheet-formula-input {
