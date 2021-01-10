@@ -49,18 +49,8 @@ export default class Home extends React.Component {
         hideRow: this.onChange,
         deleteColumn: this.onChange,
         deleteRow: this.onChange,
-        insertColumn: () => {
-          var workbook = this.getJSON();
-          workbook.columns = ++this.numColumns;
-          this.getSpreadsheet().fromJSON(workbook);
-          this.onChange();
-        },
-        insertRow: (event) => {
-          var workbook = this.getJSON();
-          workbook.rows = ++this.numRows;
-          this.getSpreadsheet().fromJSON(workbook);
-          this.onChange();
-        }
+        insertColumn: this.onChange,
+        insertRow: this.onChange
       });
 
       this.reloadSpreadsheetContent();
