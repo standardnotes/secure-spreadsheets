@@ -64,6 +64,11 @@ export default class Home extends React.Component {
           if (!this.sheetSizeUpdated) {
             return;
           }
+          /**
+           * To update the sheet size when a new column/row is inserted, we need to:
+           * 1. Rebuild the spreadsheet with the current data
+           * 2. Immediately save the note
+           */
           this.sheetSizeUpdated = false;
           this.getSpreadsheet().fromJSON(this.getJSON());
           this.onChange();
