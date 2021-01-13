@@ -12,6 +12,7 @@ export default class Home extends React.Component {
 
     this.numRows = 75;
     this.numColumns = 26;
+    this.sheetSizeUpdated = false;
   }
 
   componentDidMount() {
@@ -49,8 +50,24 @@ export default class Home extends React.Component {
         hideRow: this.onChange,
         deleteColumn: this.onChange,
         deleteRow: this.onChange,
-        insertColumn: this.onChange,
-        insertRow: this.onChange
+        insertColumn: (event) => {
+          this.numColumns++;
+          this.sheetSizeUpdated = true;
+          this.onChange();
+        },
+        insertRow: (event) => {
+          this.numRows++;
+          this.sheetSizeUpdated = true;
+          this.onChange();
+        },
+        render: () => {
+          if (!this.sheetSizeUpdated) {
+            return;
+          }
+          this.sheetSizeUpdated = false;
+          this.getSpreadsheet().fromJSON(this.getJSON());
+          this.onChange();
+        }
       });
 
       this.reloadSpreadsheetContent();
