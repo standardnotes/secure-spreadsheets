@@ -12,6 +12,7 @@ export default class Home extends React.Component {
 
     this.numRows = 75;
     this.numColumns = 26;
+    this.needsDimensionUpdate = false;
   }
 
   componentDidMount() {
@@ -20,6 +21,18 @@ export default class Home extends React.Component {
         rows: this.numRows,
         columns: this.numColumns,
         change: this.onChange,
+        render: () => { 
+          if(this.needsDimensionUpdate) {
+            // make sure this only recreates the sheet once per dimension change
+            this.needsDimensionUpdate = false;
+
+            // rebuild the spreadsheet off current data
+            this.getSpreadsheet().fromJSON(this.getJSON());
+
+            // make sure to save to note
+            this.onChange();
+          }
+        },
         changeFormat: this.onChange, // triggered when cell structure changes (currency, date, etc)
         excelImport: (event) => {
           // Excel import functionality has been disabled completely.
@@ -49,17 +62,13 @@ export default class Home extends React.Component {
         hideRow: this.onChange,
         deleteColumn: this.onChange,
         deleteRow: this.onChange,
-        insertColumn: () => {
-          var workbook = this.getJSON();
-          workbook.columns = ++this.numColumns;
-          this.getSpreadsheet().fromJSON(workbook);
-          this.onChange();
+        insertColumn: (event) => {
+          this.numColumns += 1;
+          this.needsDimensionUpdate = true;
         },
         insertRow: (event) => {
-          var workbook = this.getJSON();
-          workbook.rows = ++this.numRows;
-          this.getSpreadsheet().fromJSON(workbook);
-          this.onChange();
+          this.numRows += 1;
+          this.needsDimensionUpdate = true;
         }
       });
 
@@ -110,7 +119,6 @@ export default class Home extends React.Component {
     json.columns = this.numColumns;
     return json;
   }
-
 
   connectToBridge() {
     var permissions = [
