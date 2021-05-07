@@ -99,7 +99,7 @@ export default class Home extends React.Component {
       note.content.preview_plain = "Created with Secure Spreadsheets";
 
       var json = this.getJSON();
-      var content = JSON.stringify(json);
+      var content = JSON.stringify(json, null, 2);
       note.content.text = content;
     });
   }
