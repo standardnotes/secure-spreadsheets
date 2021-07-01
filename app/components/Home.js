@@ -158,8 +158,14 @@ export default class Home extends React.Component {
     }
 
     const text = this.note.content.text;
-    if (text.length == 0) {
-      return;
+
+    /**
+     * If the note's text is empty, we want to save the note
+     * so that the empty string is replaced with a JSON string
+     * that is readable by the editor.
+     */
+    if (text.length === 0) {
+      this.saveSpreadsheet();
     }
 
     const json = JSON.parse(text);
@@ -171,6 +177,7 @@ export default class Home extends React.Component {
       this.numColumns = json.columns;
     }
     this.getSpreadsheet().fromJSON(json);
+    this.getSpreadsheet().refresh();
   }
 
   render() {
